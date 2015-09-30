@@ -3,7 +3,7 @@
 #Purpose:  It's the fucking CurrentUserAllHosts profile
 #Date:     30/09/2015
 #Author:   Miguel Santos
-#Notes:    It gets symlinked on the place of $PROFILE.CurrentUserAllHosts
+#Notes:    It gets symlinked in place of $PROFILE.CurrentUserAllHosts
 
 
 ##Aliases
