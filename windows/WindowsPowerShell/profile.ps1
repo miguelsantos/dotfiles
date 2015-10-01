@@ -7,12 +7,14 @@
 
 
 ##Imports
+##Note: Imports are now handled by the module mecanism of posh
 
 #. .\printer.ps1
 #. .\util.ps1
 
 
 ##Aliases
+
 
 ##Variables
 
