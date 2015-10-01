@@ -6,6 +6,12 @@
 #Notes:    It gets symlinked in place of $PROFILE.CurrentUserAllHosts
 
 
+##Imports
+
+#. .\printer.ps1
+#. .\util.ps1
+
+
 ##Aliases
 
 ##Variables
@@ -14,54 +20,3 @@ New-Variable -Name reqelevated -Value "Elevated shell required! Try running Powe
 
 
 ##Functions
-
-Function Test-ConsoleHost{
-	if(($host.Name -match 'consolehost')) {$true}
-	Else {$false}  
-}
-
-Function Test-Elevated{
-
-	<#
-		.Synopsis
-			Tests if the user is an administrator
-		.Description
-			Returns true if a user is an administrator, false if the user is not an administrator       
-		.Example
-			Test-Elevated
-		#>
-	$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-	$principal = New-Object Security.Principal.WindowsPrincipal $identity
-	$principal.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-}
-
-Function Restart-Spooler {
-
-	if(Test-Elevated){
-		get-service spooler | where {$_.status -eq 'running'} | restart-service -force
-		}
-	else{
-		Write-Output "$reqelevated"
-		}	
-}
-
-Function Stop-Spooler{
-
-	if(Test-Elevated){
-		get-service spooler | where {$_.status -eq 'stopped'} | stop-service -force
-		}
-	else{
-		Write-Output "$reqelevated"
-		}	
-}
-
-Function Start-Spooler{
-
-	if(Test-Elevated){
-		get-service spooler | where {$_.status -eq 'running'} | start-service -force
-		}
-	else{
-		Write-Output "$reqelevated"
-		}
-}
-
