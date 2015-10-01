@@ -19,7 +19,7 @@ Set-Alias -Name dotfiles -Value Edit-Dotfiles
 
 ##Variables
 
-New-Variable -Name reqelevated -Value "Elevated shell required! Try running PowerShell with Administrator rights." -Description "Elevated prompt required" -Option ReadOnly -Scope "Global"
+New-Variable -Name require_elevated -Value "Elevated shell required! Try running PowerShell with Administrator rights." -Description "Elevated prompt required" -Option ReadOnly -Scope "Global"
 New-Variable -Name dot_files_dir -Value "$HOME\dotfiles" -Description "dotfiles location" -Option ReadOnly -Scope "Global"
 
 ##Functions

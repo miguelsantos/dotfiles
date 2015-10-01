@@ -15,7 +15,7 @@ Function Restart-Spooler {
 		get-service spooler | where {$_.status -eq 'running'} | restart-service -force
 		}
 	else{
-		Write-Output "$reqelevated"
+		Write-Output "$require_elevated"
 		}
 }
 
@@ -25,7 +25,7 @@ Function Stop-Spooler{
 		get-service spooler | where {$_.status -eq 'running'} | stop-service -force
 		}
 	else{
-		Write-Output "$reqelevated"
+		Write-Output "$require_elevated"
 		}
 }
 
@@ -35,6 +35,6 @@ Function Start-Spooler{
 		get-service spooler | where {$_.status -eq 'stopped'} | start-service -force
 		}
 	else{
-		Write-Output "$reqelevated"
+		Write-Output "$require_elevated"
 		}
 }
