@@ -16,7 +16,7 @@
 ##Aliases
 
 Set-Alias -Name dotfiles -Value Edit-Dotfiles
-Set-Alias -Name spool -Value Set-Spool
+Set-Alias -Name spooler -Value Set-Spooler
 
 ##Variables
 
@@ -29,7 +29,7 @@ Function Edit-Dotfiles
 {
 	If (Test-Path $dot_files_dir)
 	{
-		& atom $dot_files_dir
+		& atom -n $dot_files_dir
 	}
 	Else {Write-Output "The $dot_files_dir dir does not exist."}
 }

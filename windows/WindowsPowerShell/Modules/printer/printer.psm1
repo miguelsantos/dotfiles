@@ -45,17 +45,17 @@ Function Get-SpoolerStatus
 }
 
 
-Function Set-Spool
+Function Set-Spooler
 	<#
 		.SYNOPSIS
 			Manages the spool Service
 		.DESCRIPTION
 			Starts, stops or restarts the spool Service
 		.EXAMPLE
-			Set-Spool start
-			Set-Spool stop
-			Set-Spool restart
-			Set-Spool status
+			Set-Spooler start
+			Set-Spooler stop
+			Set-Spooler restart
+			Set-Spooler status
 	#>
 {
 	Param
