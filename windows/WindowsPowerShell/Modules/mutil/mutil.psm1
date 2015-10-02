@@ -8,18 +8,19 @@
 
 ##Functions
 
-Function Test-ConsoleHost{
-	if(($host.Name -match 'consolehost')) {$true}
+Function Test-ConsoleHost
+{
+	If(($host.Name -match 'consolehost')) {$true}
 	Else {$false}
 }
 
-Function Test-Elevated{
-
+Function Test-Elevated
+{
 	<#
 		.Synopsis
 			Tests if the user is an administrator
 		.Description
-			Returns true if a user is an administrator, false if the user is not an administrator
+			Returns true If a user is an administrator, false If the user is not an administrator
 		.Example
 			Test-Elevated
 		#>

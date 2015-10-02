@@ -1,5 +1,5 @@
 #FileName: profile.ps1
-#Name:     Miguel's humble posh profile
+#Name:     Miguel's humble PowerShell profile
 #Purpose:  It's the fucking CurrentUserAllHosts profile
 #Date:     30/09/2015
 #Author:   Miguel Santos
@@ -7,7 +7,7 @@
 
 
 ##Imports
-##Note: Imports are now handled by the module mecanism of posh
+##Note: Imports are now handled by the module mechanism of PowerShell
 
 #. .\printer.ps1
 #. .\util.ps1
@@ -16,6 +16,7 @@
 ##Aliases
 
 Set-Alias -Name dotfiles -Value Edit-Dotfiles
+Set-Alias -Name spool -Value Set-Spool
 
 ##Variables
 
@@ -24,6 +25,11 @@ New-Variable -Name dot_files_dir -Value "$HOME\dotfiles" -Description "dotfiles 
 
 ##Functions
 
-Function Edit-Dotfiles{
-	& atom $dot_files_dir
+Function Edit-Dotfiles
+{
+	If (Test-Path $dot_files_dir)
+	{
+		& atom $dot_files_dir
+	}
+	Else {Write-Output "The $dot_files_dir dir does not exist."}
 }
