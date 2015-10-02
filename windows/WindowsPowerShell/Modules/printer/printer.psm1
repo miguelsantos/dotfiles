@@ -6,12 +6,16 @@
 #Notes:
 
 
-##Functions
+##Variables
 
+New-Variable -Name require_elevated -Value "This command requires an elevated prompt! Try running PwerShell with an Administrator account." -Description "Elevated prompt required" -Option ReadOnly -Scope "Global"
+
+
+##Functions
 
 Function Restart-Spooler
 {
-	If(Test-Elevated)
+	If (Test-Elevated)
 	{
 		Get-Service spooler | where {$_.status -eq 'running'} | Restart-Service -Force
 		Get-Service spooler | where {$_.status -eq 'stopped'} | Start-Service
@@ -21,7 +25,7 @@ Function Restart-Spooler
 
 Function Stop-Spooler
 {
-	If(Test-Elevated)
+	If (Test-Elevated)
 	{
 		Get-Service spooler | where {$_.status -eq 'running'} | Stop-Service -Force
 	}
@@ -30,7 +34,7 @@ Function Stop-Spooler
 
 Function Start-Spooler
 {
-	If(Test-Elevated)
+	If (Test-Elevated)
 	{
 		Get-Service spooler | where {$_.status -eq 'stopped'} | Start-Service
 	}
@@ -44,18 +48,29 @@ Function Get-SpoolerStatus
 	Write-Output "$spoolerstatus"
 }
 
+Function Clear-Spooler
+{
+	If (Test-Elevated)
+	{
+		Stop-Spooler
+		Remove-Item $SYSTEMROOT\system32\spool\PRINTERS\* -recurse
+		Start-Spooler
+	}
+	Else {Write-Output "$require_elevated"}
+}
 
 Function Set-Spooler
 	<#
 		.SYNOPSIS
 			Manages the spool Service
 		.DESCRIPTION
-			Starts, stops or restarts the spool Service
+			Starts, stops, restarts, shows the status or clears the queue of the spooler Service
 		.EXAMPLE
 			Set-Spooler start
 			Set-Spooler stop
 			Set-Spooler restart
 			Set-Spooler status
+			Set-Spooler clear
 	#>
 {
 	Param
@@ -81,6 +96,10 @@ Function Set-Spooler
 		ElseIf ($Param1 -eq "status")
 		{
 			Get-SpoolerStatus
+		}
+		ElseIf ($Param1 -eq "clear")
+		{
+			Clear-Spooler
 		}
 		Else {Write-Output "Unsupported parameter."}
 	}

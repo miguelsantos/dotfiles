@@ -18,10 +18,11 @@
 Set-Alias -Name dotfiles -Value Edit-Dotfiles
 Set-Alias -Name spooler -Value Set-Spooler
 
+
 ##Variables
 
-New-Variable -Name require_elevated -Value "Elevated shell required! Try running PowerShell with Administrator rights." -Description "Elevated prompt required" -Option ReadOnly -Scope "Global"
 New-Variable -Name dot_files_dir -Value "$HOME\dotfiles" -Description "dotfiles location" -Option ReadOnly -Scope "Global"
+
 
 ##Functions
 
