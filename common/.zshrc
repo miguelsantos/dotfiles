@@ -82,4 +82,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dotfiles="atom ~/dotfiles/
+alias dotfiles="atom ~/dotfiles/"
+alias pingoo="ping -c 4 -t 4 google.com"
