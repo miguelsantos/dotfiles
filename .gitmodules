@@ -1,6 +1,3 @@
 [submodule "common/gibo"]
 	path = common/gibo
 	url = https://github.com/simonwhitaker/gibo.git
-[submodule "common/slimzsh"]
-	path = common/slimzsh
-	url = https://github.com/changs/slimzsh.git
